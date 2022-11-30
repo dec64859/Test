@@ -41,6 +41,34 @@ def car(x, y, size, color):
         fill="BLACK",
         tag="oval_002"
     )
+    
+def car_delete(x, y, size):
+    canvas.create_rectangle(
+        50*size+x, 50*size+y, 255*size+x, 215*size+y,
+        fill="White",
+        width=0,
+        tag="rect_delete_001"
+    )
+
+#数値の入力
+def inputval():
+    val = input()
+    try:            
+        val = int(val)
+        gyou = val/10
+        gyou = int(gyou)
+        retu = val%10
+
+        if(val < 0 or 99 <val):
+            print('Error')
+            return inputval()
+        else:
+            car_delete(45*retu, 45*gyou, 1/5)
+            return inputval()
+            
+    except:
+        print('Error')
+        return inputval()
 
 #10x10の描画
 for i in range(10):
@@ -49,8 +77,8 @@ for i in range(10):
             car(45*j, 45*i, 1/5, "Blue")
         else:
             car(45*j, 45*i, 1/5, "Red")
-
-
+ 
+inputval()
 
 #画面をそのまま表示
 frm.mainloop()

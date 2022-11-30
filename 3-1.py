@@ -3,15 +3,15 @@ import tkinter as tk
 #Tkクラス生成
 frm = tk.Tk()
 #画面サイズ
-frm.geometry('1000x600')
+frm.geometry('600x400')
 #画面タイトル
 frm.title('tk')
 
 #フォーム上に描画エリアを作成
 canvas = tk.Canvas(
     frm,
-    width=1000,
-    height=600,
+    width=600,
+    height=400,
     background="#fff"
 )
 canvas.pack()
@@ -41,16 +41,10 @@ def car(x, y, size, color):
         fill="BLACK",
         tag="oval_002"
     )
+    
+car = car(45, 45, 1/5, "Blue")
 
-#10x10の描画
-for i in range(10):
-    for j in range(10):
-        if((i+j)%2==0):
-            car(45*j, 45*i, 1/5, "Blue")
-        else:
-            car(45*j, 45*i, 1/5, "Red")
-
-
+canvas.move(car, 200, 0)
 
 #画面をそのまま表示
 frm.mainloop()
