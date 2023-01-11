@@ -61,23 +61,26 @@ canvas = tk.Canvas(
 )
 canvas.pack()
 
+def key_press(event):
+    if event.keysym=="Up":
+        btn_up(car1)
+    elif event.keysym=="Left":
+        btn_left(car1)
+    elif event.keysym=="Right":
+        btn_right(car1)
+    elif event.keysym=="Down":
+        btn_down(car1)
+        
+def btn_up(event):
+    event.car_move(0,-5)
+def btn_left(event):
+    event.car_move(-5,0)
+def btn_right(event):
+    event.car_move(5,0)
+def btn_down(event):
+    event.car_move(0,5)
+  
 car1=Car(40, 40, 1/5, "BLUE")
 car1.car_c(40, 40, 1/5, "BLUE")
-move_change=True
-current_x = 40
-x=0
-while True:
-    current_x += x
-    car1.car_move(x, 0)
-    if(move_change):
-        x=5
-    else:
-        x=-5  
-    if(current_x>600-200/5):
-        move_change=False
-    elif(current_x<0):
-        move_change=True      
-    time.sleep(0.02)
-    frm.update()
-
-#画面をそのまま表示
+frm.bind("<KeyPress>",key_press)
+frm.mainloop()
